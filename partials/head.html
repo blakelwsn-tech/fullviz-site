@@ -2,12 +2,8 @@
 <link rel="icon" href="{{root}}favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" sizes="192x192" href="{{root}}assets/img/icon-192.png">
 <link rel="apple-touch-icon" href="{{root}}assets/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Web fonts load without blocking the first paint. Size-matched fallbacks in site.css hold the layout until they arrive. -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,72,600,70,1;1,72,500,70,1&amp;family=Hanken+Grotesk:wght@400..700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,72,600,70,1;1,72,500,70,1&amp;family=Hanken+Grotesk:wght@400..700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&amp;text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%20.%2C%3F%21%27%22%28%29-%3A%3B%2F%26%2B%24%25%23%E2%80%99%E2%80%9C%E2%80%9D&amp;display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,72,600,70,1;1,72,500,70,1&amp;family=Hanken+Grotesk:wght@400..700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&amp;text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%20.%2C%3F%21%27%22%28%29-%3A%3B%2F%26%2B%24%25%23%E2%80%99%E2%80%9C%E2%80%9D&amp;display=swap"></noscript>
+<!-- Fonts are self-hosted (see section 0 of site.css). These two are needed for the first screen on every page. -->
+<link rel="preload" as="font" type="font/woff2" href="{{root}}assets/fonts/fraunces-600.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{{root}}assets/fonts/hanken-grotesk-400-700.woff2" crossorigin>
 <link rel="stylesheet" href="{{root}}assets/css/site.css">
 <script>document.documentElement.classList.add("js")</script>

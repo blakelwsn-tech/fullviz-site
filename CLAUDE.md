@@ -33,6 +33,7 @@ assets/css/site.css     The one stylesheet. Tokens at the top.
 assets/js/site.js       Mobile menu + renders the "Elsewhere" list
 assets/js/writing-data.js   The list of external writing links
 assets/img/             Photos (WebP + JPEG), logo, icons, share image
+assets/fonts/           Self-hosted web fonts (woff2) and their licence texts
 partials/               Source of truth for blocks shared between pages
 tools/                  Optional helpers. Nothing here runs when a page loads.
 CNAME, robots.txt, sitemap.xml, .nojekyll, favicon.ico
@@ -90,7 +91,9 @@ Yellow is never used for text or thin lines on cream; it doesn't have the contra
 | IBM Plex Mono | `--mono` | Small uppercase labels, figure labels |
 | Nanum Pen Script | `--hand` | Handwritten notes and asides |
 
-Fonts load from Google Fonts in `partials/head.html`, without blocking the first paint. Fraunces is requested as two fixed cuts (about 70 KB together) instead of the full variable font (about 270 KB); asking for more weights makes the pages slower. The fallback fonts at the top of `site.css` are size-matched to the web fonts, so re-measure them if a font changes. The Nanum request uses `&text=` to fetch only Latin characters; if a handwritten note needs a new symbol, add it there.
+Fonts are self-hosted in `assets/fonts/` and declared at the top of `assets/css/site.css`. The site makes no third-party requests. Fraunces ships as two fixed cuts (roman 600, italic 500, optical size 72), about 70 KB together; the full variable font is about 270 KB and made mobile pages slow. `partials/head.html` preloads the two fonts every page needs first. The fallback fonts in section 0b of the stylesheet are size-matched to the web fonts, so re-measure them if a font changes. All four families are under the SIL Open Font License; keep the `OFL-*.txt` files next to the fonts.
+
+The handwriting font file is a small subset: letters, digits, and `. , ? ! ' " ( ) - : ; / & + $ % #` plus curly quotes. A handwritten note that needs any other character will show it in a fallback font until the subset is rebuilt (download Nanum Pen Script from Google Fonts with a `&text=` list that includes it).
 
 Type sizes are fluid `clamp()` tokens (`--h1-hero`, `--h1`, `--h2`, `--h3`, `--lede`). Section spacing is `--section`. Layout width is `--wrap` (80rem); reading width is `--measure` (36rem).
 
@@ -217,7 +220,6 @@ Search the repo for `TODO` to find them all.
 - Two or three non-headshot photos for `about.html`.
 - "Things I keep seeing" on `field-notes.html` has two entries, both Blake's. Four more drafts are waiting on his review.
 - The private review list in `CLAUDE.local.md` (not committed) tracks paragraphs Blake still needs to confirm.
-- Self-host the fonts (download the four families into `assets/fonts/` and replace the two Google Fonts links in `partials/head.html`).
 
 ## Deploying
 

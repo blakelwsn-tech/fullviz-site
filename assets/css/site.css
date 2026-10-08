@@ -4,7 +4,17 @@
    page sections, figures. Mobile first. No build step.
    ========================================================================== */
 
-/* ---- 0. Fallback fonts ---------------------------------------------------
+/* ---- 0. Fonts ------------------------------------------------------------
+   Self-hosted from assets/fonts/ (SIL Open Font License; licence texts sit beside the files).
+   Latin subsets only. Fraunces ships as two fixed cuts: roman 600 and italic 500. */
+@font-face{font-family:"Fraunces";font-style:italic;font-weight:500;font-display:swap;src:url("../fonts/fraunces-500-italic.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Fraunces";font-style:normal;font-weight:600;font-display:swap;src:url("../fonts/fraunces-600.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Hanken Grotesk";font-style:normal;font-weight:400 700;font-display:swap;src:url("../fonts/hanken-grotesk-400-700.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url("../fonts/ibm-plex-mono-500.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:600;font-display:swap;src:url("../fonts/ibm-plex-mono-600.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Nanum Pen Script";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/nanum-pen-script-latin.woff2") format("woff2")}
+
+/* ---- 0b. Fallback fonts --------------------------------------------------
    System fonts resized to match the web fonts, so text doesn't jump around
    when the web fonts arrive. Ratios were measured in the browser. */
 @font-face{font-family:"Fraunces Fallback";src:local("Georgia Bold"),local("Georgia-Bold");font-weight:600 900;font-style:normal;size-adjust:85%}
