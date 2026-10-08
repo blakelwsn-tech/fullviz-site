@@ -26,7 +26,6 @@
         b.setAttribute("aria-pressed", String(b.getAttribute("data-filter") === key));
       });
       if (count) {
-        count.hidden = false;
         count.textContent = "Showing " + shown + " of " + cards.length;
       }
     };
@@ -37,7 +36,6 @@
         history.replaceState(null, "", key === "all" ? location.pathname : "#" + key);
       });
     });
-    filters.hidden = false;
     var start = location.hash.replace("#", "");
     show(filters.querySelector('[data-filter="' + start + '"]') ? start : "all");
   }

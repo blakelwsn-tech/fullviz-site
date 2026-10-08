@@ -200,6 +200,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .filter{min-height:2.75rem;padding:.5rem .85rem;border:1.5px solid var(--ink);border-radius:2px;background:transparent;color:var(--ink);font:500 .78rem/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .12s ease}
 .filter:hover{background:var(--paper-deep)}
 .filter[aria-pressed="true"]{background:var(--beam)}
+html:not(.js) .filters,html:not(.js) .filter-count{display:none}
 .filter-count{margin:0 0 1.5rem;color:var(--muted);font:500 .78rem/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase}
 .trio,.seeing{display:grid;gap:2rem 2.5rem}
 .slip{padding-top:1.1rem;border-top:1.5px solid var(--ink)}

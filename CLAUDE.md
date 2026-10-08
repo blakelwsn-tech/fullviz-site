@@ -147,7 +147,7 @@ The five domains, with the keys the filter uses:
 1. Copy `tools/field-note-template.html` to `field-notes/your-slug.html`. Use lowercase words and hyphens for the slug.
 2. Fill in the capitalised placeholders: title, where, tagline, stage, domain tags, description, the scoreboard numbers, and the three sections. Replace `SLUG` in the canonical and `og:url` lines. Numbers come from `raw/proof/` only.
 3. Point the "Next" link at an existing note, and point another note's "Next" link at this one so the loop includes it.
-4. In `field-notes.html`, add a `<li class="card">` to the "Proof of work" list. Copy an existing card and change `data-domains` (domain keys, space-separated), the stage, the domain labels, the title, the link, the tagline, and the where line.
+4. In `field-notes.html`, add a `<li class="card">` to the "Proof of work" list, and update the number in the "Showing 11 of 11" line just above it. Copy an existing card and change `data-domains` (domain keys, space-separated), the stage, the domain labels, the title, the link, the tagline, and the where line.
 5. In `index.html`, "Fresh from the field" shows three cards. Swap one for the new note if it deserves the spot.
 6. Add the URL to `sitemap.xml`.
 7. Run `python3 tools/sync.py` to fill in the header and footer.

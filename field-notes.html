@@ -59,8 +59,8 @@
       <div class="section__head">
         <h2 id="proof-h">Proof of work</h2>
       </div>
-      <!-- Filter buttons. Hidden until site.js turns them on; data-filter matches the cards' data-domains. -->
-      <div class="filters" role="group" aria-label="Show field notes by domain" hidden>
+      <!-- Filter buttons. They need JavaScript, so the stylesheet hides them when it is off. data-filter matches the cards' data-domains. -->
+      <div class="filters" role="group" aria-label="Show field notes by domain">
         <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
         <button class="filter" type="button" data-filter="inventory" aria-pressed="false">Inventory and planning</button>
         <button class="filter" type="button" data-filter="operations" aria-pressed="false">Fulfillment and operations</button>
@@ -68,7 +68,7 @@
         <button class="filter" type="button" data-filter="product" aria-pressed="false">Product and systems</button>
         <button class="filter" type="button" data-filter="finance" aria-pressed="false">Finance and data</button>
       </div>
-      <p class="filter-count" aria-live="polite" hidden></p>
+      <p class="filter-count" aria-live="polite">Showing 11 of 11</p>
       <ul class="cards" id="note-cards">
         <li class="card" data-domains="product operations">
           <p class="card__meta"><span class="tag tag--stage">1 to 2</span><span class="label">Product and systems &middot; Fulfillment and operations</span></p>
