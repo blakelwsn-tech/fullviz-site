@@ -59,6 +59,18 @@
       <div class="section__head">
         <h2 id="proof-h">Proof of work</h2>
       </div>
+      <!-- What the stage labels mean. Note pages link here (#stages). -->
+      <div class="stages" id="stages">
+        <div class="slip">
+          <p class="label"><span class="tag tag--stage">0 to 1</span></p>
+          <p>0 to 1 is building the first version. Nothing exists yet. Speed matters more than polish, processes get built by hand, and they change as fast as the business learns.</p>
+        </div>
+        <div class="slip">
+          <p class="label"><span class="tag tag--stage">1 to 2</span></p>
+          <p>1 to 2 is making it work at scale. Something already works, and now it has to work every day, at higher volume, for more people. Stability, repeatable processes, and systems that hold up matter more than speed.</p>
+        </div>
+        <p class="stages__why">The stage a business is in decides what it needs: which systems, which processes, how fast to move, and how much stability to protect. Getting the stage wrong is how companies end up with the wrong tool for the job.</p>
+      </div>
       <!-- Filter buttons. They need JavaScript, so the stylesheet hides them when it is off. data-filter matches the cards' data-domains. -->
       <div class="filters" role="group" aria-label="Show field notes by domain">
         <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
@@ -131,7 +143,7 @@
           <p class="card__where">Amazon &middot; Inventory</p>
         </li>
         <li class="card" data-domains="product">
-          <p class="card__meta"><span class="tag tag--stage">0 to 1</span><span class="label">Product and systems</span></p>
+          <p class="card__meta"><span class="tag tag--stage">1 to 2</span><span class="label">Product and systems</span></p>
           <h3><a href="field-notes/thirty-percent-of-every-sprint.html">Thirty percent of every sprint</a></h3>
           <p>Technical debt went from 30 to 40% of every sprint to under 10%.</p>
           <p class="card__where">SAP &middot; Product</p>
@@ -145,18 +157,120 @@
         <p class="section__lede">I&rsquo;m bad at hot takes (I don&rsquo;t like disagreeing with people enough). So these are patterns instead.</p>
       </div>
       <div class="seeing">
-        <article class="slip">
+        <article class="slip slip--icon">
+<!-- @include icon-returns -->
+<svg class="icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<circle class="f-hlfill" cx="35" cy="36" r="20"/>
+<path class="f-pen" d="M18.6 26.6C22.4 27.0 36.8 26.8 40.4 26.8Q42.8 27.0 43.3 29.8C43.2 33.4 42.9 47.7 42.8 51.2Q43.4 54.5 39.8 54.2C35.2 54.1 16.6 53.9 12.0 53.9Q9.2 53.6 9.0 50.8C9.0 47.4 9.0 33.5 9.0 30.1Q8.9 26.5 12.0 27.0C13.8 27.4 21.0 28.7 22.8 29.0"/>
+<path class="f-pen" d="M25.8 26.8C25.9 28.7 26.3 36.0 26.4 37.9"/>
+<path class="f-pen" d="M47.5 40.1C47.9 37.5 50.8 28.4 50.0 24.4C49.3 20.4 46.7 17.8 42.9 16.2C39.0 14.6 29.6 15.2 27.0 15.0M34.0 11.5L27.0 15.0M33.2 18.5L27.0 15.0"/>
+</svg>
+<!-- @end icon-returns -->
           <h3>Brands undervalue the return.</h3>
           <p>Most companies treat a return as a cost to shrink. It&rsquo;s also the moment a customer decides whether to buy from you again. In the National Retail Federation&rsquo;s 2025 survey, about 71% of shoppers said they&rsquo;re less likely to shop with a retailer again after a poor returns experience, and 82% called free returns a major consideration before they buy.</p>
-          <p>I&rsquo;ve watched it work from the inside twice. At Prime Wardrobe, a simpler return raised NPS about two points. At Gorjana, automating the returns flow meant fewer customers had to follow up with customer care about a return.</p>
+          <p>I&rsquo;ve watched it work from the inside twice. At Prime Wardrobe, a simpler return raised NPS about two points. At Gorjana, moving returns to a scannable flow cut processing from 4 to 7 days down to 2 to 3, and customers reached out less about return status.</p>
           <p class="source">Survey: <a class="inline-link" href="https://nrf.com/media-center/press-releases/consumers-expected-to-return-nearly-850-billion-in-merchandise-in-2025" rel="noopener">National Retail Federation and Happy Returns, 2025</a>.</p>
+          <p class="source">More on this: <a class="inline-link" href="https://www.linkedin.com/posts/blake-c-lawson_customerexperience-retail-returns-activity-7354695710736306177-lDQK" rel="noopener">a flagship store that couldn&rsquo;t take an online return</a> (LinkedIn).</p>
         </article>
-        <article class="slip">
+        <article class="slip slip--icon">
+<!-- @include icon-globe -->
+<svg class="icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<circle class="f-hlfill" cx="34" cy="34" r="19"/>
+<path class="f-pen" d="M22.6 13.7C24.1 13.1 28.5 10.5 31.5 10.4C34.5 10.3 37.8 11.7 40.6 13.1C43.3 14.4 46.1 16.2 48.2 18.5C50.2 20.7 52.3 23.7 53.0 26.7C53.7 29.6 53.3 33.2 52.6 36.2C51.9 39.2 50.8 42.5 48.9 44.9C47.1 47.3 44.2 49.1 41.5 50.6C38.8 52.1 35.6 53.7 32.5 53.9C29.4 54.2 25.7 53.4 22.9 52.0C20.2 50.6 17.8 48.0 15.9 45.5C14.0 43.0 12.5 40.1 11.7 37.2C10.8 34.2 10.4 30.8 11.0 27.7C11.5 24.7 13.0 21.5 14.8 19.0C16.7 16.4 19.2 13.9 22.0 12.5C24.8 11.1 29.9 10.9 31.5 10.6"/>
+<path class="f-pen" d="M32.0 10.9C32.7 11.4 35.1 12.4 36.4 14.2C37.7 16.0 38.9 18.7 39.7 21.7C40.4 24.7 40.7 28.5 40.8 32.0C40.8 35.5 40.5 39.5 39.8 42.5C39.1 45.6 37.8 48.5 36.5 50.3C35.2 52.0 33.5 53.1 32.0 53.1C30.5 53.2 28.7 52.5 27.4 50.7C26.1 48.9 25.0 45.5 24.3 42.4C23.6 39.3 23.1 35.5 23.1 32.0C23.1 28.5 23.5 24.6 24.2 21.5C24.9 18.4 26.1 15.0 27.4 13.3C28.7 11.6 31.2 11.6 32.0 11.2"/>
+<path class="f-pen" d="M10.8 31.9C17.9 31.9 46.1 31.8 53.2 31.8"/>
+<path class="f-pen" d="M15.0 21.0C17.8 21.6 26.3 24.5 32.0 24.5C37.7 24.5 46.2 21.6 49.0 21.0"/>
+<path class="f-pen" d="M15.0 43.0C17.8 42.4 26.3 39.5 32.0 39.5C37.7 39.5 46.2 42.4 49.0 43.0"/>
+</svg>
+<!-- @end icon-globe -->
           <h3>Retail is a sum of its parts.</h3>
           <p>Shoppers behave differently from one country to the next. The operational needs and the technical tenets underneath stay the same.</p>
         </article>
+        <article class="slip slip--icon">
+<!-- @include icon-words -->
+<svg class="icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<circle class="f-hlfill" cx="32" cy="32" r="19"/>
+<path class="f-pen" d="M16.1 6.1C19.4 5.9 29.0 5.9 31.4 6.0Q37.0 6.2 36.2 11.0C36.1 12.7 35.9 19.5 35.8 21.3Q35.1 26.8 30.6 26.2C27.3 26.1 13.9 25.9 10.6 25.8Q6.2 25.4 5.7 20.7C5.7 19.1 5.8 12.4 5.9 10.8Q5.6 6.1 10.9 5.8C12.4 6.3 18.4 8.1 19.9 8.6"/>
+<path class="f-pen" d="M13 26L11 33L20 26"/>
+<path class="f-pen" d="M14.3 13.3C16.6 13.2 25.9 12.9 28.2 12.8"/>
+<path class="f-pen" d="M14.1 18.9C16.4 19.0 25.8 19.0 28.1 19.0"/>
+<path class="f-pen" d="M39.6 34.4C41.0 34.1 50.2 34.0 52.5 33.9Q58.2 33.7 57.6 38.8C57.6 40.6 57.7 47.7 57.8 49.5Q57.7 54.3 52.8 54.4C49.5 54.4 36.0 54.2 32.6 54.1Q27.4 53.8 27.6 49.1C27.6 47.5 27.7 41.0 27.7 39.4Q27.0 35.2 32.7 34.3C34.2 34.6 40.2 35.9 41.7 36.2"/>
+<path class="f-pen" d="M51 54L54 61L44 54"/>
+<path class="f-pen" d="M36.1 41.0C38.4 41.0 47.5 40.8 49.8 40.8"/>
+<path class="f-pen" d="M36.4 47.3C38.6 47.2 47.7 47.2 50.0 47.2"/>
+<path class="f-pen" d="M47.4 36.6C46.0 39.0 40.3 48.5 38.9 50.9"/>
+</svg>
+<!-- @end icon-words -->
+          <h3>Most systems problems are definitions problems.</h3>
+          <p>Most companies buy a solution before they&rsquo;ve defined what they need. It works at first. Then the business grows, and the gaps show up downstream, in processes the tool was never set up to handle. A lot of that comes down to language. Two people say &ldquo;margin&rdquo; and mean different numbers, and every decision built on it inherits the gap.</p>
+          <p>It starts with visibility. Once the numbers are visible, the definitions get sharper, and sharper definitions keep surfacing the biggest opportunities in areas I don&rsquo;t even run, like marketing. At a D2C apparel brand, a customer acquisition cost that was calculated wrong was hiding about $50K of ad overspend. Fixing the definition improved ROAS and cash flow. At Nuna Baby, it went the other way: a marketing budget in another market had stalled in approval, and putting it to work contributed to a revenue lift there.</p>
+        </article>
+        <article class="slip slip--icon">
+<!-- @include icon-clipboard -->
+<svg class="icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<circle class="f-hlfill" cx="36" cy="38" r="19"/>
+<path class="f-pen" d="M25.8 11.7C28.6 12.3 42.4 12.4 45.9 12.5Q50.4 12.7 49.8 16.5C49.8 22.5 49.5 46.6 49.5 52.6Q48.9 57.2 45.4 56.6C40.9 56.5 22.8 56.4 18.2 56.4Q14.1 56.7 14.2 52.4C14.2 46.3 14.0 22.2 14.0 16.2Q13.3 12.4 18.0 12.2C19.8 12.2 27.3 12.3 29.2 12.3"/>
+<path class="f-pen" d="M29.3 6.3C30.7 6.9 35.5 7.0 36.7 7.0Q39.1 7.1 38.8 9.1C38.8 9.8 38.8 13.0 38.8 13.8Q38.6 15.5 36.8 15.9C35.2 15.9 28.8 16.1 27.2 16.1Q25.0 16.1 25.1 14.2C25.0 13.3 24.9 9.7 24.8 8.8Q24.2 6.0 26.7 6.8C27.5 7.0 30.7 8.0 31.5 8.2"/>
+<path class="f-pen" d="M20 27L23 30L28 23"/>
+<path class="f-pen" d="M31.8 26.6C33.8 26.7 41.8 27.1 43.8 27.1"/>
+<path class="f-pen" d="M20 38L23 41L28 34"/>
+<path class="f-pen" d="M32.3 37.6C34.3 37.7 42.2 37.8 44.2 37.8"/>
+<path class="f-pen" d="M23.5 43.5C23.2 44.2 25.3 44.1 25.9 44.1Q26.5 44.8 26.9 45.1C26.9 45.9 27.0 49.0 27.0 49.8Q26.7 50.6 26.0 50.9C25.2 50.9 22.1 51.0 21.3 51.1Q19.9 51.6 20.3 50.1C20.3 49.3 20.2 46.0 20.2 45.2Q19.9 43.6 21.2 44.2C21.6 44.3 23.2 44.4 23.6 44.5"/>
+<path class="f-pen" d="M32.3 47.6C33.7 47.7 39.3 47.8 40.7 47.9"/>
+</svg>
+<!-- @end icon-clipboard -->
+          <h3>Scrappy first, automate when it&rsquo;s needed.</h3>
+          <p>A procedure people follow on paper beats an integration nobody understands the value of or trusts. At Amazon, I built most processes in Excel before an engineer was ever assigned to automate them, and I still work that way. Get it working by hand, then automate the version that works.</p>
+          <p>There are more cost-effective tools available now than ever. Why buy the Lamborghini when a Honda Civic gets you there?</p>
+        </article>
+        <article class="slip slip--icon">
+<!-- @include icon-gauge -->
+<svg class="icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<circle class="f-hlfill" cx="34" cy="34" r="18"/>
+<path class="f-pen" d="M53.9 43.8C53.8 42.6 53.8 38.8 52.9 36.4C52.1 34.1 50.6 31.8 48.9 29.9C47.2 28.0 45.0 26.4 42.9 25.1C40.7 23.7 38.6 22.5 36.1 22.0C33.7 21.5 30.7 21.6 28.2 22.1C25.7 22.7 23.4 23.8 21.1 25.0C18.9 26.3 16.4 27.6 14.8 29.5C13.2 31.5 12.1 34.3 11.3 36.8C10.6 39.2 10.4 43.0 10.2 44.3"/>
+<path class="f-pen" d="M6.7 43.9C15.1 43.9 48.7 43.9 57.1 43.9"/>
+<path class="f-pen" d="M51.1 33.0L46.7 35.5"/>
+<path class="f-pen" d="M43.0 24.9L40.5 29.3"/>
+<path class="f-pen" d="M32.0 22.0L32.0 27.0"/>
+<path class="f-pen" d="M21.0 24.9L23.5 29.3"/>
+<path class="f-pen" d="M12.9 33.0L17.3 35.5"/>
+<path class="f-pen" d="M31.9 44.2C34.1 41.3 42.9 29.8 45.1 27.0"/>
+<circle class="f-solid" cx="32" cy="44" r="2.8"/>
+</svg>
+<!-- @end icon-gauge -->
+          <h3>NPS and CSAT aren&rsquo;t marketing metrics.</h3>
+          <p>They&rsquo;re business metrics, and they should drive real operational decisions. At Prime Wardrobe, NPS was the backstop for the front-end and order-level experience. When we cut costs out of returns, the target was to do it without hurting NPS. It went up about two points instead, because customers valued the simpler return.</p>
+          <p>At many other companies, nobody had connected those scores to day-to-day decisions, which leaves the business blind to what customers actually think of their experience. Customer scores belong right next to revenue and profitability in executive reporting.</p>
+        </article>
+        <article class="slip slip--icon">
+<!-- @include icon-parcel -->
+<svg class="icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<circle class="f-hlfill" cx="34" cy="38" r="19"/>
+<path class="f-pen" d="M15.9 29.9C17.9 29.9 28.9 29.9 31.7 29.9Q34.6 29.3 34.7 32.9C34.7 36.0 34.7 48.4 34.7 51.4Q35.2 53.7 31.7 54.4C28.1 54.4 13.7 54.3 10.1 54.3Q6.9 53.8 7.0 51.3C6.9 48.2 6.6 36.0 6.6 32.9Q6.9 29.9 9.5 29.9C11.1 30.2 17.5 31.1 19.1 31.3"/>
+<path class="f-pen" d="M21.0 30.3C21.1 31.9 21.3 38.3 21.4 39.9"/>
+<path class="f-pen f-dash" d="M38.0 44.0C39.2 44.2 43.0 45.8 45.0 45.0C47.0 44.2 49.2 40.0 50.0 39.0"/>
+<path class="f-pen" d="M45.5 19C45.5 25 49 29 52 34C55 29 58.5 25 58.5 19C58.5 10.5 45.5 10.5 45.5 19Z"/>
+<circle class="f-solid" cx="52" cy="19" r="2.4"/>
+</svg>
+<!-- @end icon-parcel -->
+          <h3>The order isn&rsquo;t finished when it ships.</h3>
+          <p>Tracking, delivery, and returns are part of the product. Customers grade you on them, and so does your P&amp;L.</p>
+        </article>
+        <article class="slip slip--icon">
+<!-- @include icon-stack -->
+<svg class="icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<circle class="f-hlfill" cx="30" cy="38" r="19"/>
+<path class="f-pen" d="M12.4 37.2C15.4 38.1 25.1 38.0 27.5 37.9Q29.0 37.2 29.5 39.9C29.5 42.3 29.5 51.6 29.4 53.9Q29.3 55.3 27.4 56.0C24.4 56.0 12.2 56.3 9.1 56.4Q6.5 56.1 7.1 54.4C7.0 52.1 6.7 42.6 6.6 40.3Q6.4 38.9 8.6 38.2C9.8 38.2 14.7 38.2 16.0 38.2"/>
+<path class="f-pen" d="M38.1 38.8C39.8 38.1 49.0 37.8 51.2 37.7Q53.5 38.4 53.2 39.7C53.1 42.0 52.8 51.5 52.7 53.9Q52.5 55.1 50.7 55.9C47.6 56.0 35.5 56.3 32.5 56.4Q30.3 56.4 30.6 54.5C30.7 52.1 31.0 42.8 31.1 40.4Q31.6 37.6 33.1 38.3C34.4 38.7 39.3 40.1 40.5 40.5"/>
+<path class="f-pen" d="M24.3 20.5C27.6 19.9 36.8 20.2 39.1 20.3Q41.2 19.8 41.1 22.4C41.1 24.7 41.1 33.9 41.1 36.2Q40.6 38.3 39.1 38.2C36.1 38.2 24.0 38.0 20.9 37.9Q19.2 38.6 18.9 35.9C18.9 33.5 18.9 23.9 18.9 21.5Q18.7 19.6 20.8 19.6C22.1 20.0 27.0 21.5 28.2 21.8"/>
+<path class="f-pen" d="M43.6 11.2C44.4 10.7 46.4 8.7 48.0 8.1C49.6 7.5 51.7 7.0 53.3 7.4C55.0 7.8 56.8 9.1 57.9 10.4C59.0 11.8 59.9 13.9 59.9 15.6C59.9 17.3 59.1 19.2 58.1 20.6C57.1 22.1 55.7 23.5 54.1 24.2C52.5 24.8 50.3 25.0 48.7 24.5C47.0 24.1 45.3 22.8 44.2 21.5C43.1 20.1 42.2 18.2 42.1 16.4C42.0 14.7 42.7 12.7 43.6 11.2C44.6 9.7 47.1 8.1 47.8 7.5"/>
+<text class="f-note" x="51" y="21" text-anchor="middle">$</text>
+</svg>
+<!-- @end icon-stack -->
+          <h3>Inventory is a loan you made to yourself.</h3>
+          <p>Big, infrequent purchase orders feel efficient. They&rsquo;re also how a growing brand ends up funding growth with debt. Smaller and more often is usually the better trade.</p>
+        </article>
       </div>
-      <!-- TODO: more entries to come. -->
     </section>
 
     <section class="section" aria-labelledby="else-h">
@@ -168,6 +282,7 @@
       <ul class="links" id="writing-list">
         <li><a href="https://www.linkedin.com/in/blake-c-lawson/" rel="noopener"><strong>Follow along on LinkedIn</strong><span>LinkedIn</span></a></li>
       </ul>
+      <p class="source">&ldquo;Show it here&rdquo; loads the post from LinkedIn, which may set its own cookies. The titles open the same posts on LinkedIn.</p>
     </section>
 
   </div>

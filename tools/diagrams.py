@@ -133,9 +133,20 @@ def o2c_tall():
 
 
 # ------------------------------------------------------------ the route so far
-STOPS = [("SOUTHERN IDAHO", "pigs, FFA"), ("BIOLA", "kinesiology"), ("TARGET", "asset protection"),
-         ("AMAZON", "4 jobs, 6 years"), ("SAP", "FullViz starts here, too"),
-         ("NUNA BABY", "4 brands, 9 countries"), ("GORJANA", "123 stores, one peak")]
+# Each stop: (label, handwritten note on what Blake took from those years). "|" starts a new line.
+# The notes are his own lines. Up to three lines each, and no line over about 28 characters.
+STOPS = [("SOUTHERN IDAHO", "baseball, pigs,|and FFA"),
+         ("BIOLA", "realized I didn&rsquo;t|want to be a physical|therapist after all"),
+         ("TARGET", "great leaders showed me|how to lead people, while|I learned to run a store"),
+         ("AMAZON", "built the plane while|flying it, and found the seam|between ops and product"),
+         ("SAP", "enterprise tech|in a retail world"),
+         ("NUNA BABY", "brought it back|to the numbers"),
+         ("GORJANA", "put all the pieces|together for an|ops turnaround")]
+
+
+def lines(x, y, text, gap=26, rot=0.0, anchor="middle"):
+    """A handwritten note of one or two lines; y is the first line's baseline."""
+    return "\n".join(note(x, y + i * gap, part, rot, anchor=anchor) for i, part in enumerate(text.split("|")))
 
 
 def pin(p, o, x, y):
@@ -144,44 +155,124 @@ def pin(p, o, x, y):
 
 
 def route_wide():
-    W, H = 1200, 360
+    W, H = 1200, 388
     p = Pen(31)
     o = []
-    pts = [(70 + i * 142, 240 if i % 2 == 0 else 150) for i in range(7)]
-    lh, _ = lighthouse(Pen(5), 1112, 262, s=.55)
-    trail = [(pts[0][0] - 46, pts[0][1] + 14)] + pts + [(990, 204), (1040, 232), (1078, 252)]
+    pts = [(70 + i * 142, 244 if i % 2 == 0 else 154) for i in range(7)]
+    lh, _ = lighthouse(Pen(5), 1112, 266, s=.55)
+    trail = [(pts[0][0] - 46, pts[0][1] + 14)] + pts + [(990, 208), (1040, 236), (1078, 256)]
     o.append(ink(p.smooth([(x + p.j(2), y + p.j(2)) for x, y in trail]), "f-pen f-dash"))
-    for (x, y), (label, hand) in zip(pts, STOPS):
+    for i, ((x, y), (label, hand)) in enumerate(zip(pts, STOPS)):
         pin(p, o, x, y)
+        nx = x + (10 if i == 0 else 0)  # keep the first note inside the left edge
+        rot = p.j(1.6)
         if y > 200:
             o.append('<text class="f-l" x="%d" y="%d" text-anchor="middle">%s</text>' % (x, y + 36, label))
-            o.append(note(x, y + 66, hand, p.j(2.5)))
+            o.append(lines(nx, y + 66, hand, rot=rot))
         else:
-            o.append(note(x, y - 46, hand, p.j(2.5)))
+            o.append(lines(nx, y - 46 - 26 * hand.count("|"), hand, rot=rot))
             o.append('<text class="f-l" x="%d" y="%d" text-anchor="middle">%s</text>' % (x, y - 22, label))
-    o.append(ink(p.squiggle(1164, 268, 1196, 268, amp=2.4, wl=16), "f-ink f-thin"))
+    o.append(ink(p.squiggle(1164, 272, 1196, 272, amp=2.4, wl=16), "f-ink f-thin"))
     o.append(lh)
-    o.append('<text class="f-l" x="1112" y="298" text-anchor="middle">FULLVIZ</text>')
-    o.append(note(1112, 328, "you are here", -2))
+    o.append('<text class="f-l" x="1112" y="302" text-anchor="middle">FULLVIZ</text>')
+    o.append(note(1112, 332, "you are here", -2))
     return W, H, "\n".join(o)
 
 
 def route_tall():
-    W, H = 360, 800
+    W = 360
     p = Pen(33)
     o = []
-    pts = [(46 + (8 if i % 2 else -8), 44 + i * 84) for i in range(7)]
-    lh, _ = lighthouse(Pen(5), 62, 786, s=.5)
-    trail = [(pts[0][0] + 6, pts[0][1] - 30)] + pts + [(40, 640), (58, 700)]
+    # Stops are spaced by how many lines each note runs to.
+    ys, y = [], 44
+    for _, hand in STOPS:
+        ys.append(y)
+        y += 77 + 25 * hand.count("|")
+    end = ys[-1] + 28 + 25 * STOPS[-1][1].count("|")  # baseline of the last handwritten line
+    base = end + 196                                   # where the lighthouse stands
+    H = base + 14
+    pts = [(46 + (8 if i % 2 else -8), yy) for i, yy in enumerate(ys)]
+    lh, _ = lighthouse(Pen(5), 62, base, s=.5)
+    trail = [(pts[0][0] + 6, pts[0][1] - 30)] + pts + [(40, end - 20), (56, base - 178)]
     o.append(ink(p.smooth([(x + p.j(1.5), y + p.j(1.5)) for x, y in trail]), "f-pen f-dash"))
     for (x, y), (label, hand) in zip(pts, STOPS):
         pin(p, o, x, y)
         o.append('<text class="f-l" x="80" y="%d">%s</text>' % (y + 1, label))
-        o.append(note(80, y + 27, hand, p.j(1.5), anchor="start"))
+        o.append(lines(80, y + 28, hand, gap=25, rot=p.j(1), anchor="start"))
     o.append(lh)
-    o.append('<text class="f-l" x="124" y="728">FULLVIZ</text>')
-    o.append(note(124, 756, "you are here", -2, anchor="start"))
+    o.append('<text class="f-l" x="124" y="%d">FULLVIZ</text>' % (base - 58))
+    o.append(note(124, base - 30, "you are here", -2, anchor="start"))
     return W, H, "\n".join(o)
+
+
+# ------------------------------------------------------------ small icons
+# 64 x 64, pen strokes over a highlighter dot. Used beside the patterns on About and Field Notes.
+def _icon(body, dot=(35, 36, 20)):
+    return 64, 64, '<circle class="f-hlfill" cx="%d" cy="%d" r="%d"/>\n%s' % (dot[0], dot[1], dot[2], "\n".join(body))
+
+
+def icon_returns():
+    p = Pen(61)
+    return _icon([ink(p.rrect(9, 27, 34, 27, r=3, wob=.6, cj=.6, over=4)),
+                  ink(p.line(26, 27, 26, 38, wob=.4, ej=.4)),
+                  ink(p.arrow(47, 40, 27, 15, bend=.5, head=8, wob=.5))])
+
+
+def icon_globe():
+    p = Pen(62)
+    return _icon([ink(p.loop(32, 32, 21, 21, turns=1.08, n=14, wob=.03, drift=.03)),
+                  ink(p.loop(32, 32, 9, 21, turns=1.0, n=12, wob=.03, drift=0, start=-1.57)),
+                  ink(p.line(11, 32, 53, 32, wob=.6, ej=.5)),
+                  ink(p.smooth([(15, 21), (32, 24.5), (49, 21)])),
+                  ink(p.smooth([(15, 43), (32, 39.5), (49, 43)]))], dot=(34, 34, 19))
+
+
+def icon_words():
+    p = Pen(63)
+    return _icon([ink(p.rrect(6, 6, 30, 20, r=5, wob=.5, cj=.5, over=3)), ink("M13 26L11 33L20 26"),
+                  ink(p.line(14, 13, 28, 13, wob=.4, ej=.4)), ink(p.line(14, 19, 28, 19, wob=.4, ej=.4)),
+                  ink(p.rrect(28, 34, 30, 20, r=5, wob=.5, cj=.5, over=3)), ink("M51 54L54 61L44 54"),
+                  ink(p.line(36, 41, 50, 41, wob=.4, ej=.4)), ink(p.line(36, 47, 50, 47, wob=.4, ej=.4)),
+                  ink(p.line(47, 37, 39, 51, wob=.4, ej=.4))], dot=(32, 32, 19))
+
+
+def icon_clipboard():
+    p = Pen(64)
+    return _icon([ink(p.rrect(14, 12, 36, 44, r=4, wob=.6, cj=.6, over=4)),
+                  ink(p.rrect(25, 7, 14, 9, r=2, wob=.3, cj=.3, over=2)),
+                  ink("M20 27L23 30L28 23"), ink(p.line(32, 27, 44, 27, wob=.4, ej=.4)),
+                  ink("M20 38L23 41L28 34"), ink(p.line(32, 38, 44, 38, wob=.4, ej=.4)),
+                  ink(p.rrect(20, 44, 7, 7, r=1, wob=.3, cj=.3, over=1)), ink(p.line(32, 48, 41, 48, wob=.4, ej=.4))], dot=(36, 38, 19))
+
+
+def icon_gauge():
+    p = Pen(65)
+    arc = [(32 + 22 * math.cos(math.radians(a)), 44 - 22 * math.sin(math.radians(a))) for a in range(0, 181, 20)]
+    ticks = [ink("M%.1f %.1fL%.1f %.1f" % (32 + 22 * math.cos(math.radians(a)), 44 - 22 * math.sin(math.radians(a)),
+                                          32 + 17 * math.cos(math.radians(a)), 44 - 17 * math.sin(math.radians(a))))
+             for a in (30, 60, 90, 120, 150)]
+    return _icon([ink(p.smooth([(x + p.j(.4), y + p.j(.4)) for x, y in arc])), ink(p.line(7, 44, 57, 44, wob=.5, ej=.4))] + ticks +
+                 [ink(p.line(32, 44, 45, 27, wob=.3, ej=.2)), '<circle class="f-solid" cx="32" cy="44" r="2.8"/>'], dot=(34, 34, 18))
+
+
+def icon_parcel():
+    p = Pen(66)
+    return _icon([ink(p.rrect(7, 30, 28, 24, r=3, wob=.6, cj=.6, over=4)), ink(p.line(21, 30, 21, 40, wob=.4, ej=.4)),
+                  ink(p.smooth([(38, 44), (45, 45), (50, 39)]), "f-pen f-dash"),
+                  ink("M45.5 19C45.5 25 49 29 52 34C55 29 58.5 25 58.5 19C58.5 10.5 45.5 10.5 45.5 19Z"),
+                  '<circle class="f-solid" cx="52" cy="19" r="2.4"/>'], dot=(34, 38, 19))
+
+
+def icon_stack():
+    p = Pen(67)
+    return _icon([ink(p.rrect(7, 38, 22, 18, r=2, wob=.5, cj=.5, over=3)), ink(p.rrect(31, 38, 22, 18, r=2, wob=.5, cj=.5, over=3)),
+                  ink(p.rrect(19, 20, 22, 18, r=2, wob=.5, cj=.5, over=3)),
+                  ink(p.loop(51, 16, 8.5, 8.5, turns=1.1, n=10, wob=.04)),
+                  '<text class="f-note" x="51" y="21" text-anchor="middle">$</text>'], dot=(30, 38, 19))
+
+
+ICONS = {"returns": icon_returns, "globe": icon_globe, "words": icon_words, "clipboard": icon_clipboard,
+         "gauge": icon_gauge, "parcel": icon_parcel, "stack": icon_stack}
 
 
 # ------------------------------------------------------------ lighthouses
@@ -240,6 +331,8 @@ if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
     write("fig-o2c", svg(*o2c_wide(), "fig fig--wide", ALT_O2C) + "\n" + svg(*o2c_tall(), "fig fig--tall", ALT_O2C))
     write("fig-route", svg(*route_wide(), "fig fig--wide", ALT_ROUTE) + "\n" + svg(*route_tall(), "fig fig--tall", ALT_ROUTE))
+    for name, draw in ICONS.items():
+        write("icon-" + name, svg(*draw(), "icon"))
     write("fig-lighthouse", svg(*lighthouse_plain(), "fig"))
     write("fig-rocks", svg(*lighthouse_rocks(), "fig", "A hand-drawn lighthouse. Its beam lights up two rocks in the water."))
     write("fig-lost", svg(*lighthouse_lost(), "fig", "A hand-drawn lighthouse shining its beam into fog. A handwritten note says nothing out here."))

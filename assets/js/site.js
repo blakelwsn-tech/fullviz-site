@@ -55,7 +55,39 @@
       source.textContent = item.source || "";
       a.appendChild(title);
       a.appendChild(source);
-      li.appendChild(a);
+      var row = document.createElement("div");
+      row.className = "links__row";
+      row.appendChild(a);
+      li.appendChild(row);
+      if (item.embed) {
+        /* The post is only fetched from LinkedIn when a visitor asks for it. */
+        var show = document.createElement("button");
+        var box = document.createElement("div");
+        show.type = "button";
+        show.className = "links__show";
+        show.setAttribute("aria-expanded", "false");
+        show.textContent = "Show it here";
+        box.className = "links__embed";
+        box.hidden = true;
+        show.addEventListener("click", function () {
+          var opening = box.hidden;
+          if (opening && !box.firstChild) {
+            var frame = document.createElement("iframe");
+            frame.src = item.embed;
+            frame.title = "LinkedIn post: " + item.title;
+            frame.height = item.height || 670;
+            frame.width = 504;
+            frame.setAttribute("frameborder", "0");
+            frame.setAttribute("allowfullscreen", "");
+            box.appendChild(frame);
+          }
+          box.hidden = !opening;
+          show.setAttribute("aria-expanded", String(opening));
+          show.textContent = opening ? "Hide it" : "Show it here";
+        });
+        row.appendChild(show);
+        li.appendChild(box);
+      }
       list.appendChild(li);
     });
   }
