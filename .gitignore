@@ -1,0 +1,11 @@
+# Source material and working files. None of this is published.
+raw/
+copy/
+directions/
+.claude/
+CLAUDE.local.md
+
+# macOS and Python noise
+.DS_Store
+__pycache__/
+*.pyc
