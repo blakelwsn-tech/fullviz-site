@@ -85,12 +85,12 @@ Yellow is never used for text or thin lines on cream; it doesn't have the contra
 
 | Font | Token | Use |
 |---|---|---|
-| Fraunces (SOFT 70, WONK 1) | `--display` | Headlines, big numbers, italic ledes |
+| Fraunces (SOFT 70, WONK 1, optical size 72) | `--display` | Headlines, big numbers, italic ledes. Two fixed cuts only: roman 600 and italic 500 |
 | Hanken Grotesk | `--body` | Body copy, buttons |
 | IBM Plex Mono | `--mono` | Small uppercase labels, figure labels |
 | Nanum Pen Script | `--hand` | Handwritten notes and asides |
 
-Fonts load from Google Fonts in `partials/head.html`. The Nanum request uses `&text=` to fetch only Latin characters; if a handwritten note needs a new symbol, add it there.
+Fonts load from Google Fonts in `partials/head.html`, without blocking the first paint. Fraunces is requested as two fixed cuts (about 70 KB together) instead of the full variable font (about 270 KB); asking for more weights makes the pages slower. The fallback fonts at the top of `site.css` are size-matched to the web fonts, so re-measure them if a font changes. The Nanum request uses `&text=` to fetch only Latin characters; if a handwritten note needs a new symbol, add it there.
 
 Type sizes are fluid `clamp()` tokens (`--h1-hero`, `--h1`, `--h2`, `--h3`, `--lede`). Section spacing is `--section`. Layout width is `--wrap` (80rem); reading width is `--measure` (36rem).
 

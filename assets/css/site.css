@@ -7,10 +7,10 @@
 /* ---- 0. Fallback fonts ---------------------------------------------------
    System fonts resized to match the web fonts, so text doesn't jump around
    when the web fonts arrive. Ratios were measured in the browser. */
-@font-face{font-family:"Fraunces Fallback";src:local("Georgia Bold"),local("Georgia-Bold");font-weight:600 900;font-style:normal;size-adjust:78%}
-@font-face{font-family:"Fraunces Fallback";src:local("Georgia Bold Italic"),local("Georgia-BoldItalic");font-weight:600 900;font-style:italic;size-adjust:80%}
-@font-face{font-family:"Fraunces Fallback";src:local("Georgia Italic"),local("Georgia-Italic");font-weight:100 599;font-style:italic;size-adjust:82%}
-@font-face{font-family:"Fraunces Fallback";src:local("Georgia");font-weight:100 599;font-style:normal;size-adjust:84%}
+@font-face{font-family:"Fraunces Fallback";src:local("Georgia Bold"),local("Georgia-Bold");font-weight:600 900;font-style:normal;size-adjust:85%}
+@font-face{font-family:"Fraunces Fallback";src:local("Georgia Bold Italic"),local("Georgia-BoldItalic");font-weight:600 900;font-style:italic;size-adjust:78%}
+@font-face{font-family:"Fraunces Fallback";src:local("Georgia Italic"),local("Georgia-Italic");font-weight:100 599;font-style:italic;size-adjust:91%}
+@font-face{font-family:"Fraunces Fallback";src:local("Georgia");font-weight:100 599;font-style:normal;size-adjust:92%}
 @font-face{font-family:"Hanken Fallback";src:local("Arial Bold"),local("Arial-BoldMT");font-weight:600 900;size-adjust:94%}
 @font-face{font-family:"Nanum Fallback";src:local("Bradley Hand"),local("BradleyHandITCTT-Bold");size-adjust:82%}
 
@@ -53,7 +53,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.6 va
 img,svg{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration-thickness:1.5px;text-underline-offset:.22em}
 h1,h2,h3{margin:0;font-family:var(--display);font-weight:600;font-variation-settings:var(--wonk);line-height:1.04;letter-spacing:-.02em;text-wrap:balance}
-h1{font-size:var(--h1);font-weight:620;line-height:.95;letter-spacing:-.032em}
+h1{font-size:var(--h1);font-weight:600;line-height:.95;letter-spacing:-.032em}
 h2{font-size:var(--h2)}
 h3,.h3{font-size:var(--h3);line-height:1.15;letter-spacing:-.012em}
 p{margin:0 0 1em}
@@ -70,7 +70,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .section--rule{border-top:1.5px solid var(--ink)}
 .section--tight{padding-block:calc(var(--section)*.6)}
 .section__head{max-width:46rem;margin-bottom:clamp(2rem,1.4rem + 2vw,3.25rem)}
-.section__lede{margin:1rem 0 0;font:italic 480 var(--lede)/1.2 var(--display);font-variation-settings:var(--wonk);letter-spacing:-.012em;text-wrap:balance}
+.section__lede{margin:1rem 0 0;font:italic 500 var(--lede)/1.2 var(--display);font-variation-settings:var(--wonk);letter-spacing:-.012em;text-wrap:balance}
 .label{margin:0 0 1rem;font:500 .78rem/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase}
 .label--muted{color:var(--muted)}
 .prose{max-width:var(--measure)}
@@ -112,12 +112,12 @@ ul,ol{margin:0;padding:0;list-style:none}
 .kick{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.25rem 1.5rem;margin:.4rem 0 0;padding-top:.8rem;border-top:1.5px solid var(--ink);font:500 .78rem/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase}
 .hero{padding-block:2.25rem 1rem}
 .hero h1{position:relative;z-index:0;font-size:var(--h1-hero);line-height:.93;letter-spacing:-.035em}
-.hero h1 em{font-style:italic;font-weight:540}
+.hero h1 em{font-style:italic;font-weight:500}
 .mark{position:relative;white-space:nowrap}
 .mark svg{position:absolute;z-index:-1;left:-2.5%;top:14%;width:105%;height:78%;max-width:none;overflow:visible;pointer-events:none}
 .mark path{fill:var(--beam)}
 .hero__cols{display:grid;gap:3rem;margin-top:2.5rem}
-.sub{margin:0 0 1rem;font:italic 480 clamp(1.5rem,1.1rem + 1.7vw,2.3rem)/1.12 var(--display);font-variation-settings:var(--wonk);letter-spacing:-.015em;text-wrap:balance}
+.sub{margin:0 0 1rem;font:italic 500 clamp(1.5rem,1.1rem + 1.7vw,2.3rem)/1.12 var(--display);font-variation-settings:var(--wonk);letter-spacing:-.015em;text-wrap:balance}
 .lede{max-width:33rem;margin:0 0 1.9rem;font-size:1.125rem}
 .byline{display:flex;align-items:center;gap:.9rem;max-width:33rem;margin-top:2.25rem;padding-top:1.25rem;border-top:1px solid var(--rule)}
 .byline picture{flex:none}
@@ -134,7 +134,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 .prev{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1.5rem;margin-top:3.5rem;padding-block:1.4rem 0;border-top:1.5px solid var(--ink)}
 .prev .label{margin:0}
-.prev ul{display:flex;flex-wrap:wrap;font:italic 480 clamp(1.3rem,1rem + 1.2vw,1.9rem)/1.3 var(--display);font-variation-settings:var(--wonk)}
+.prev ul{display:flex;flex-wrap:wrap;font:italic 500 clamp(1.3rem,1rem + 1.2vw,1.9rem)/1.3 var(--display);font-variation-settings:var(--wonk)}
 .prev li:not(:last-child)::after{content:"/";margin-inline:.7rem;font-style:normal;opacity:.35}
 
 /* ---- 7. Home: sections -------------------------------------------------- */
@@ -152,7 +152,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 /* How I work */
 .steps{display:grid;gap:2.25rem 2.5rem;counter-reset:step}
 .steps li{counter-increment:step;padding-top:1.1rem;border-top:1.5px solid var(--ink)}
-.steps li::before{content:counter(step,decimal-leading-zero);display:inline-block;margin-bottom:.9rem;padding-inline:.18em;background:linear-gradient(transparent 16%,var(--beam) 16% 88%,transparent 88%);font:italic 540 2.6rem/1 var(--display);font-variation-settings:var(--wonk)}
+.steps li::before{content:counter(step,decimal-leading-zero);display:inline-block;margin-bottom:.9rem;padding-inline:.18em;background:linear-gradient(transparent 16%,var(--beam) 16% 88%,transparent 88%);font:italic 500 2.6rem/1 var(--display);font-variation-settings:var(--wonk)}
 .steps h3{margin-bottom:.6rem}
 .steps p{margin:0}
 
@@ -211,7 +211,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .band{background:var(--beam);overflow:hidden}
 .band__in{display:grid;gap:2rem;align-items:end;padding-block:clamp(3.5rem,2rem + 6vw,6.5rem) 0}
 .band__copy{padding-bottom:clamp(3.5rem,2rem + 6vw,6.5rem)}
-.band h2{max-width:13ch;font-size:clamp(2.4rem,1.4rem + 4.6vw,5rem);font-weight:620;line-height:.96;letter-spacing:-.03em}
+.band h2{max-width:13ch;font-size:clamp(2.4rem,1.4rem + 4.6vw,5rem);font-weight:600;line-height:.96;letter-spacing:-.03em}
 .band p{max-width:30rem;margin:1.25rem 0 1.75rem;font-size:1.2rem}
 .band .band__fine{margin:1.75rem 0 0;font:400 1.6rem/1.1 var(--hand)}
 .band__fig{display:none}
