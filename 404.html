@@ -13,8 +13,11 @@
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,70,1;1,9..144,400..700,70,1&amp;family=Hanken+Grotesk:wght@400..700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&amp;text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%20.%2C%3F%21%27%22%28%29-%3A%3B%2F%26%2B%24%25%23%E2%80%99%E2%80%9C%E2%80%9D&amp;display=swap">
+<!-- Web fonts load without blocking the first paint. Size-matched fallbacks in site.css hold the layout until they arrive. -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,70,1;1,9..144,400..700,70,1&amp;family=Hanken+Grotesk:wght@400..700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,70,1;1,9..144,400..700,70,1&amp;family=Hanken+Grotesk:wght@400..700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&amp;text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%20.%2C%3F%21%27%22%28%29-%3A%3B%2F%26%2B%24%25%23%E2%80%99%E2%80%9C%E2%80%9D&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,70,1;1,9..144,400..700,70,1&amp;family=Hanken+Grotesk:wght@400..700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&amp;text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%20.%2C%3F%21%27%22%28%29-%3A%3B%2F%26%2B%24%25%23%E2%80%99%E2%80%9C%E2%80%9D&amp;display=swap"></noscript>
 <link rel="stylesheet" href="/assets/css/site.css">
 <script>document.documentElement.classList.add("js")</script>
 <!-- @end head -->
