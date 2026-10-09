@@ -271,8 +271,17 @@ def icon_stack():
                   '<text class="f-note" x="51" y="21" text-anchor="middle">$</text>'], dot=(30, 38, 19))
 
 
+def icon_mic():
+    p = Pen(68)
+    return _icon([ink(p.rrect(24, 7, 16, 27, r=8, wob=.4, cj=.4, over=3)),
+                  ink(p.line(27, 16, 37, 16, wob=.3, ej=.3)), ink(p.line(27, 22, 37, 22, wob=.3, ej=.3)),
+                  ink(p.smooth([(17, 26), (19, 36), (32, 43), (45, 36), (47, 26)])),
+                  ink(p.line(32, 43, 32, 54, wob=.3, ej=.3)), ink(p.line(22, 56, 42, 56, wob=.5, ej=.4)),
+                  ink(p.smooth([(9, 14), (6, 21), (9, 28)])), ink(p.smooth([(55, 14), (58, 21), (55, 28)]))], dot=(33, 24, 19))
+
+
 ICONS = {"returns": icon_returns, "globe": icon_globe, "words": icon_words, "clipboard": icon_clipboard,
-         "gauge": icon_gauge, "parcel": icon_parcel, "stack": icon_stack}
+         "gauge": icon_gauge, "parcel": icon_parcel, "stack": icon_stack, "mic": icon_mic}
 
 
 # ------------------------------------------------------------ lighthouses

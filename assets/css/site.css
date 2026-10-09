@@ -223,6 +223,23 @@ html:not(.js) .filters,html:not(.js) .filter-count{display:none}
 .slip--icon .icon{margin:0 0 .9rem -.35rem;transform:rotate(-3deg)}
 .slip--icon:nth-child(even) .icon{transform:rotate(2.5deg)}
 .prev__note{flex-basis:100%;margin:.5rem 0 0;font:400 1.65rem/1.1 var(--hand)}
+/* Client and partner logos: printed in grey on small sheets, so four different marks sit together */
+.prev--clients{align-items:center;margin-top:1.75rem;border-top:1px solid var(--rule)}
+.prev .logos{align-items:center;gap:.8rem 1rem;font:inherit}
+.prev .logos li::after{content:none}
+.logos li{display:flex;align-items:center;justify-content:center;height:4.25rem;padding:.65rem .9rem;background:var(--sheet);border:1px solid var(--rule)}
+.logos li:nth-child(odd){transform:rotate(-1.2deg)}
+.logos li:nth-child(even){transform:rotate(1deg)}
+.logos img{display:block;width:auto;height:auto;max-width:9.5rem;max-height:100%;filter:grayscale(1) contrast(1.05);mix-blend-mode:multiply}
+/* A reference, pinned under the receipt */
+.quote{position:relative;max-width:44rem;margin:4.25rem 0 0 auto;padding:2.1rem 1.5rem 1.5rem;background:var(--sheet);border:1px solid var(--rule);box-shadow:var(--shadow);transform:rotate(.7deg)}
+.quote blockquote{margin:0}
+.quote blockquote p{margin:0;font:italic 500 clamp(1.3rem,1.1rem + .9vw,1.7rem)/1.3 var(--display);font-variation-settings:var(--wonk);letter-spacing:-.012em}
+.quote blockquote p::before{content:"\201C"}
+.quote blockquote p::after{content:"\201D"}
+.quote figcaption{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem .9rem;margin-top:1.3rem;padding-top:1rem;border-top:1.5px dashed var(--rule)}
+.quote figcaption strong{font:600 1.15rem/1.2 var(--display)}
+.quote figcaption span{color:var(--muted);font:500 .78rem/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase}
 
 /* Who this isn't for */
 .notfor{display:grid;gap:2.5rem;align-items:center}
@@ -301,6 +318,25 @@ html:not(.js) .filters,html:not(.js) .filter-count{display:none}
 .scoreboard dd{margin:0;color:var(--muted);font:500 .78rem/1.5 var(--mono);letter-spacing:.07em;text-transform:uppercase}
 .article .chapter:first-of-type{border-top:0}
 .pager{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2rem;padding-block:2rem;border-top:1.5px solid var(--ink)}
+
+/* Interview player: a poster until play is pressed, then YouTube's player in the same box */
+.player{max-width:46rem;margin:0 0 2.75rem}
+.player__screen{position:relative;display:grid;place-items:center;aspect-ratio:16/9;overflow:hidden;background:var(--ink);color:var(--paper)}
+.player__screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.player__play{display:flex;flex-direction:column;align-items:center;gap:1rem;padding:1.5rem;color:inherit;text-align:center;text-decoration:none}
+.player__play::after{content:"";position:absolute;inset:0}
+.player__play:focus-visible{outline-color:var(--beam)}
+.player__btn{display:grid;place-items:center;width:4.75rem;height:4.75rem;border-radius:50%;background:var(--beam);transition:transform .15s ease}
+.player__btn svg{width:1.7rem;height:1.7rem;margin-left:.3rem;fill:var(--ink)}
+.player__play:hover .player__btn{transform:scale(1.07)}
+.player__cta{font:500 .82rem/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.player__note{display:none;position:absolute;right:1.5rem;bottom:1.1rem;margin:0;color:var(--beam);font:400 1.7rem/1 var(--hand);transform:rotate(-3deg)}
+.player .icon{position:absolute;left:1rem;top:.9rem;width:4rem;height:4rem;transform:rotate(-6deg)}
+.player .icon .f-pen{stroke:var(--paper)}
+.player .icon .f-hlfill{fill:none}
+.player figcaption{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.25rem 1.5rem;margin-top:.9rem}
+.player figcaption strong{font:600 1.3rem/1.2 var(--display)}
+.player figcaption span{color:var(--muted);font:500 .78rem/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase}
 
 /* Elsewhere list */
 .links{display:grid;max-width:46rem;border-top:1.5px solid var(--ink)}
@@ -385,6 +421,9 @@ html:not(.js) .filters,html:not(.js) .filter-count{display:none}
   .stages__why{grid-column:1 / -1}
   .links__show{margin-bottom:0}
   .snaps{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+  .quote{padding:2.4rem 2.25rem 1.75rem}
+  .player .icon{left:1.5rem;top:1.25rem;width:5.5rem;height:5.5rem}
+  .player__note{display:block}
   .patterns{grid-template-columns:repeat(2,minmax(0,1fr));gap:2.5rem;align-items:start}
   .pattern{padding:2.25rem 2rem 2rem}
   .pattern:nth-child(odd){transform:rotate(-.5deg)}

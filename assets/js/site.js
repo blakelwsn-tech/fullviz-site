@@ -1,4 +1,4 @@
-/* FullViz · site.js. Three small jobs: the mobile menu, the Field Notes filter, and the "Elsewhere" list. */
+/* FullViz · site.js. Four small jobs: the mobile menu, the Field Notes filter, the interview player, and the "Elsewhere" list. */
 (function () {
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.getElementById("site-nav");
@@ -38,6 +38,25 @@
     });
     var start = location.hash.replace("#", "");
     show(filters.querySelector('[data-filter="' + start + '"]') ? start : "all");
+  }
+
+  /* The interview: YouTube's player is only fetched when a visitor presses play. */
+  var stage = document.querySelector(".player__screen[data-video]");
+  var play = stage && stage.querySelector(".player__play");
+  if (play) {
+    play.addEventListener("click", function (event) {
+      event.preventDefault();
+      var frame = document.createElement("iframe");
+      frame.src = "https://www.youtube-nocookie.com/embed/" + stage.getAttribute("data-video") +
+        "?autoplay=1&rel=0&start=" + (stage.getAttribute("data-start") || 0);
+      frame.title = stage.getAttribute("data-title");
+      frame.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+      frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+      frame.setAttribute("allowfullscreen", "");
+      stage.textContent = "";
+      stage.appendChild(frame);
+      frame.focus();
+    });
   }
 
   var list = document.getElementById("writing-list");

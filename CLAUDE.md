@@ -9,7 +9,7 @@ The site's job is credibility and identity. It is not a lead-generation funnel. 
 ## Guardrails
 
 1. **Never name or describe the current engagement** in any way that could identify it. That includes page copy, HTML comments, alt text, commit messages, and this file.
-2. **Only these past employers may be named:** Amazon, Target, SAP, Nuna Baby, Gorjana. No other company names: not clients, not partner firms, not vendors, not sister brands. One exception Blake approved: the Prime Wardrobe note names Kohl's and Whole Foods as the return drop-off hosts, which is public. It applies to that story only.
+2. **Only these past employers may be named:** Amazon, Target, SAP, Nuna Baby, Gorjana. No other company names: not clients, not partner firms, not vendors, not sister brands. One exception Blake approved: the Prime Wardrobe note names Kohl's and Whole Foods as the return drop-off hosts, which is public. It applies to that story only. A second exception he approved: the home page shows four consulting clients and partners by logo (Farm Fresh Home Food Service, Thank God, Katonah Architectural Hardware, Illumination Labs), and the testimonial there names its author and his firm. Those are the only places they appear. The Field Notes stay anonymous: never name one of these companies in a story, and never put a logo next to one.
 3. **Never invent** metrics, testimonials, client names, or results. Where proof is missing, leave a `<!-- TODO: proof -->` comment and tell Blake.
 4. **Proof comes only from `raw/proof/`**, which is on Blake's machine and gitignored. Consulting-client stories are anonymized to problem, approach, outcome, with the client described by industry only.
 5. **Attribution stays honest.** Company growth during Blake's tenure, projections, and market sizing are not presented as his results.
@@ -19,6 +19,7 @@ The site's job is credibility and identity. It is not a lead-generation funnel. 
 9. **Industry statistics need a source.** Any number about the industry (return rates, survey results) gets a visible link to where it came from, and the year. Check the source before publishing; do not quote figures from memory.
 10. **Claims about other companies' products need checking.** For example, where a former employer's product lives today. If it can't be verified from that company's own pages, leave it out.
 11. Jeff Bezos is named once, on the About page, as the source of the one-way and two-way door idea. Blake asked for that. No other executive name-dropping.
+12. **A testimonial needs written approval** from the person quoted: word for word, with their name and title as they want them shown. No approval, no quote.
 
 ## Structure
 
@@ -30,9 +31,9 @@ field-notes/*.html      One page per Field Note
 contact.html            Contact (the booking link lives here, and only here)
 404.html                Not-found page (uses absolute "/" paths, see below)
 assets/css/site.css     The one stylesheet. Tokens at the top.
-assets/js/site.js       Mobile menu + renders the "Elsewhere" list
+assets/js/site.js       Mobile menu, Field Notes filter, interview player, "Elsewhere" list
 assets/js/writing-data.js   The list of external writing links
-assets/img/             Photos (WebP + JPEG), logo, icons, share image
+assets/img/             Photos (WebP + JPEG), logo, icons, share image, client logos (clients/)
 assets/fonts/           Self-hosted web fonts (woff2) and their licence texts
 partials/               Source of truth for blocks shared between pages
 tools/                  Optional helpers. Nothing here runs when a page loads.
@@ -91,7 +92,7 @@ Yellow is never used for text or thin lines on cream; it doesn't have the contra
 | IBM Plex Mono | `--mono` | Small uppercase labels, figure labels |
 | Nanum Pen Script | `--hand` | Handwritten notes and asides |
 
-Fonts are self-hosted in `assets/fonts/` and declared at the top of `assets/css/site.css`. The site makes no third-party requests. Fraunces ships as two fixed cuts (roman 600, italic 500, optical size 72), about 70 KB together; the full variable font is about 270 KB and made mobile pages slow. `partials/head.html` preloads the two fonts every page needs first. The fallback fonts in section 0b of the stylesheet are size-matched to the web fonts, so re-measure them if a font changes. All four families are under the SIL Open Font License; keep the `OFL-*.txt` files next to the fonts.
+Fonts are self-hosted in `assets/fonts/` and declared at the top of `assets/css/site.css`. The site makes no third-party requests on its own (a LinkedIn post or the interview video loads only when a visitor presses its button). Fraunces ships as two fixed cuts (roman 600, italic 500, optical size 72), about 70 KB together; the full variable font is about 270 KB and made mobile pages slow. `partials/head.html` preloads the two fonts every page needs first. The fallback fonts in section 0b of the stylesheet are size-matched to the web fonts, so re-measure them if a font changes. All four families are under the SIL Open Font License; keep the `OFL-*.txt` files next to the fonts.
 
 The handwriting font file is a small subset: letters, digits, and `. , ? ! ' " ( ) - : ; / & + $ % #` plus curly quotes. A handwritten note that needs any other character will show it in a fallback font until the subset is rebuilt (download Nanum Pen Script from Google Fonts with a `&text=` list that includes it).
 
@@ -113,7 +114,7 @@ Figures are inline SVG so they pick up the page fonts and colour tokens through 
 
 The route map on the About page (Fig. 2) takes its stops from the `STOPS` list in `tools/diagrams.py`. Each stop is a label plus a handwritten note that says what Blake took from those years (not a job title). The notes are his own lines, so change the wording only when he asks. A `|` in the note starts a new line: up to three lines, and no line over about 28 characters, or it runs off the phone version.
 
-The same file draws the small icons (64 by 64, navy pen over a yellow dot) and writes them to `partials/icon-*.html`: `returns`, `globe`, `words`, `clipboard`, `gauge`, `parcel`, `stack`. To add one, write an `icon_name()` function, add it to the `ICONS` dictionary, and run the two commands above. Icons are decoration, so they carry `aria-hidden` and no label.
+The same file draws the small icons (64 by 64, navy pen over a yellow dot) and writes them to `partials/icon-*.html`: `returns`, `globe`, `words`, `clipboard`, `gauge`, `parcel`, `stack`, `mic`. To add one, write an `icon_name()` function, add it to the `ICONS` dictionary, and run the two commands above. Icons are decoration, so they carry `aria-hidden` and no label.
 
 ## Voice
 
@@ -151,7 +152,7 @@ The five domains, with the keys the filter uses:
 1. Copy `tools/field-note-template.html` to `field-notes/your-slug.html`. Use lowercase words and hyphens for the slug.
 2. Fill in the capitalised placeholders: title, where, tagline, stage, domain tags, description, the scoreboard numbers, and the three sections. Replace `SLUG` in the canonical and `og:url` lines. Numbers come from `raw/proof/` only.
 3. Point the "Next" link at an existing note, and point another note's "Next" link at this one so the loop includes it.
-4. In `field-notes.html`, add a `<li class="card">` to the "Proof of work" list, and update the number in the "Showing 11 of 11" line just above it. Copy an existing card and change `data-domains` (domain keys, space-separated), the stage, the domain labels, the title, the link, the tagline, and the where line.
+4. In `field-notes.html`, add a `<li class="card">` to the "Proof of work" list, and update the number in the "Showing 12 of 12" line just above it. Copy an existing card and change `data-domains` (domain keys, space-separated), the stage, the domain labels, the title, the link, the tagline, and the where line.
 5. In `index.html`, "Fresh from the field" shows three cards. Swap one for the new note if it deserves the spot.
 6. Add the URL to `sitemap.xml`.
 7. Run `python3 tools/sync.py` to fill in the header and footer.
@@ -173,6 +174,18 @@ Open `assets/js/writing-data.js` and add one line at the top of the list:
 That's the whole edit. No sync needed. Titles are sentence case. Cut tracking codes from links (everything from the `?` onward).
 
 To let visitors read a LinkedIn post without leaving, add `embed` (the `src` from LinkedIn's embed code, keeping `?collapsed=1`) and `height`. The item then gets a "Show it here" button. Nothing loads from LinkedIn until a visitor presses it, so the site still makes no third-party requests on its own. Never paste LinkedIn's `<iframe>` code straight into a page: it loads LinkedIn's scripts and cookies on every visit.
+
+### Change the interview video
+
+The player sits at the top of "Elsewhere" on `field-notes.html`. It is a navy poster with a play button. Nothing loads from YouTube until a visitor presses play; then `assets/js/site.js` puts YouTube's player (from its no-cookie address) in the same box. Without JavaScript the button is a plain link to the video. To swap the video, change `data-video` (the id from the YouTube link), `data-start` (seconds to skip), `data-title`, the link's `href`, and the caption. Never paste YouTube's `<iframe>` code into a page: it loads YouTube's scripts on every visit. Check the video's title and description against the guardrails before linking it.
+
+### Add or remove a client logo
+
+Logos live in `assets/img/clients/` and show in the second strip under the hero on `index.html`. Only add a logo Blake has permission to use. Resize it to about 160 pixels tall with `sips`, run `python3 tools/strip_meta.py` on it, and add an `<li>` with `width`, `height`, and the company's name as `alt`. The stylesheet prints every logo in grey so different marks sit together.
+
+### Add a testimonial
+
+The one on the home page is the `<figure class="quote">` under the receipt. Copy it for another. Use the person's exact words (see guardrail 12).
 
 ### Swap a photo
 
@@ -200,6 +213,8 @@ Photos are served as WebP with a JPEG fallback, at two sizes each.
    ```bash
    python3 tools/strip_meta.py assets/img/new-photo-400.jpg assets/img/new-photo-800.jpg
    ```
+
+   It cleans PNG files too (logos, screenshots).
 
    If the phone shot it sideways, rotate it first (`sips -r 90`), because stripping the data also removes the "this way up" flag. Leave professional photos alone: their data carries the photographer's credit, and it holds no location.
 3. Make the WebP versions:
